@@ -1,0 +1,93 @@
+/* Form and Preview Styling */
+.form-panel {
+  
+  transition: all 0.3s ease-in-out;
+   border: 1px solid light;
+}
+
+.form-panel:hover {
+ 
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.preview-panel {
+    border: 1px solid light;
+   transition: all 0.3s ease-in-out;
+}
+
+.preview-panel:hover {
+  
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+/* Tab styling enhancements */
+.tab-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.tab-button:hover::before {
+  left: 100%;
+}
+
+/* Input field enhancements */
+input[type="text"],
+input[type="email"],
+input[type="file"],
+textarea,
+select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="file"]:focus,
+textarea:focus,
+select:focus {
+  transform: translateY(-2px);
+}
+
+/* Light mode focus styles */
+:not(.dark) input[type="text"]:focus,
+:not(.dark) input[type="email"]:focus,
+:not(.dark) input[type="file"]:focus,
+:not(.dark) textarea:focus,
+:not(.dark) select:focus {
+  background-color: white;
+  border-color: rgb(59, 130, 246) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  color: #1f2937;
+}
+
+/* Dark mode focus styles */
+.dark input[type="text"]:focus,
+.dark input[type="email"]:focus,
+.dark input[type="file"]:focus,
+.dark textarea:focus,
+.dark select:focus {
+  background-color: #1f2937;
+  border-color: rgb(59, 130, 246) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+  color: white;
+}
+
+
+/* PDF Export Styles */
+.pdf-export-mode .template1,
+.pdf-export-mode .template2,
+.pdf-export-mode .template3 {
+  background-color: white !important;
+  color: #333 !important;
+  font-size: 14px;
+}

@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: white;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes titleShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes titleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes subtitleGlow {
+  0%, 100% {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.4s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.brand-title {
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleShimmer 8s linear infinite, titleFloat 4s ease-in-out infinite;
+}
+
+.brand-title-light {
+  background-image: linear-gradient(120deg, #0f172a 0%, #2563eb 35%, #10b981 65%, #0f172a 100%);
+}
+
+.brand-title-dark {
+  background-image: linear-gradient(120deg, #e2e8f0 0%, #60a5fa 35%, #34d399 65%, #f8fafc 100%);
+}
+
+.brand-subtitle {
+  background-image: linear-gradient(120deg, rgba(100, 116, 139, 0.95) 0%, rgba(16, 185, 129, 0.92) 50%, rgba(100, 116, 139, 0.95) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleShimmer 9s linear infinite, subtitleGlow 4.2s ease-in-out infinite;
+}
+
+.panel-heading {
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: titleShimmer 10s linear infinite, subtitleGlow 4.8s ease-in-out infinite;
+}
+
+.panel-heading-light {
+  background-image: linear-gradient(120deg, #475569 0%, #2563eb 40%, #10b981 72%, #475569 100%);
+}
+
+.panel-heading-dark {
+  background-image: linear-gradient(120deg, #94a3b8 0%, #60a5fa 40%, #34d399 72%, #e2e8f0 100%);
+}
+
+/* Tab transitions */
+.tab-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.tab-button.active {
+  animation: slideInRight 0.3s ease-out;
+}
+
+/* Card animations */
+.card-enter {
+  animation: fadeSlide 0.3s ease-out;
+}
+
+.card-exit {
+  animation: fadeSlide 0.3s ease-out reverse;
+}
+
+.template1 p,
+.template2 p,
+.template3 p {
+  white-space: pre-wrap;
+  word-break: break-word;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.page-break-avoid {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.avoid-break {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* PDF Export Styles */
+.pdf-export-mode {
+  background: white !important;
+  color: black !important;
+}
+
+.pdf-export-mode * {
+  box-shadow: none !important;
+  transition: none !important;
+  animation: none !important;
+}
