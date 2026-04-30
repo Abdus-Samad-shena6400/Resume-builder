@@ -4,6 +4,7 @@ import { Check, ChevronDown } from "lucide-react";
 import { setSelectedTemplate, updateResumeData, addExperience, removeExperience, setActiveTab, setActiveExpIndex, setActiveEducationIndex, addEducation, removeEducation } from "./redux";
 import AddProject from "./AddProject";
 import ProficiencyRating from "./ProficiencyRating";
+import AIResumeParser from "./AIResumeParser";
 
 const TABS = [
   { id: "basic", label: "Basic" },
@@ -47,6 +48,7 @@ const ResumeForm = () => {
   const [languageInputs, setLanguageInputs] = React.useState(() =>
     parseListValue(resumeData.languages)
   );
+  const [showAI, setShowAI] = React.useState(false);
   const templateMenuRef = React.useRef(null);
   const [isTemplateMenuOpen, setIsTemplateMenuOpen] = React.useState(false);
   const activeTabLabel =
@@ -482,41 +484,59 @@ const ResumeForm = () => {
               </p>
             </div>
           </div>
-
+          
+          <button 
+            onClick={() => setShowAI(!showAI)}
+            className={`px-3 py-1.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-300 shadow-sm ${
+              showAI 
+                ? "bg-slate-100 text-slate-700 hover:bg-slate-200" 
+                : "bg-emerald-500 text-white hover:bg-emerald-600 hover:shadow-[0_4px_12px_rgba(16,185,129,0.3)]"
+            }`}
+          >
+            {showAI ? "✕ Close AI" : "✨ AI Auto-Fill"}
+          </button>
         </div>
       </div>
 
-      <div className="px-3 py-2 transition-colors duration-300 sm:px-4">
-        <div className="flex gap-2 flex-wrap pb-2">
-          {TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => dispatch(setActiveTab(tab.id))}
-              className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
-                activeTab === tab.id
-                  ? "bg-emerald-500 text-white shadow-[0_8px_18px_rgba(16,185,129,0.25)]"
-                  : theme === "dark"
-                    ? "bg-slate-800 text-slate-300 hover:bg-slate-700"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+      {!showAI && (
+        <div className="px-3 py-2 transition-colors duration-300 sm:px-4">
+          <div className="flex gap-2 flex-wrap pb-2">
+            {TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => dispatch(setActiveTab(tab.id))}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 whitespace-nowrap flex-shrink-0 ${
+                  activeTab === tab.id
+                    ? "bg-emerald-500 text-white shadow-[0_8px_18px_rgba(16,185,129,0.25)]"
+                    : theme === "dark"
+                      ? "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div
         className={`flex-1 max-h-[350px] overflow-y-auto p-2 transition-colors duration-300 sm:max-h-[450px] sm:p-3 lg:max-h-[calc(100vh-200px)] ${
           theme === "dark" ? "bg-slate-950" : "bg-white"
         }`}
       >
-        {activeTab === "basic" && renderBasicTab()}
-        {activeTab === "education" && renderEducationTab()}
-        {activeTab === "experience" && renderExperienceTab()}
-        {activeTab === "skills" && renderSkillsTab()}
-        {activeTab === "projects" && renderProjectsTab()}
-        {activeTab === "template" && renderTemplateTab()}
+        {showAI ? (
+          <AIResumeParser onClose={() => setShowAI(false)} />
+        ) : (
+          <>
+            {activeTab === "basic" && renderBasicTab()}
+            {activeTab === "education" && renderEducationTab()}
+            {activeTab === "experience" && renderExperienceTab()}
+            {activeTab === "skills" && renderSkillsTab()}
+            {activeTab === "projects" && renderProjectsTab()}
+            {activeTab === "template" && renderTemplateTab()}
+          </>
+        )}
       </div>
     </div>
   );
