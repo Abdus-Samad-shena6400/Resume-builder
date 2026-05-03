@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateResumeData } from './redux';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const API_KEY = "AIzaSyBhSLWikcTBEdQoLWCAAwi1tnsDcfRM1Xs";
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+if (!API_KEY) {
+  console.warn('Google API Key is not set. Please add VITE_GOOGLE_API_KEY to your .env.local file');
+}
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 const AIResumeParser = ({ onClose }) => {

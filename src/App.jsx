@@ -2,6 +2,7 @@ import {
   Header,
   ResumeForm,
   ResumePreview,
+  Footer,
 } from './components'
 import './App.css'
 import React, { useEffect, useRef, useState } from "react";
@@ -36,6 +37,8 @@ function App() {
           <ResumePreview printRef={printRef}  />
         </div>
       </div>
+
+      <Footer />
     </div>
   )
 }
