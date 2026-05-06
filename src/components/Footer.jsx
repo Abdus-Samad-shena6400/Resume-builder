@@ -7,14 +7,14 @@ const Footer = () => {
   const textClass = theme === "dark" ? "text-slate-300" : "text-slate-600";
 
   return (
-    <footer className={`border-t ${bgClass} py-4 px-4 sm:px-6 transition-colors duration-300`}>
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-4">
+    <footer className={`border-t ${bgClass} py-3 px-3 sm:py-4 sm:px-6 transition-colors duration-300`}>
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
         {/* Profile Image with Animation */}
         <div className="animate-[pulse_.3s_ease-in-out] hover:scale-110 transition-transform duration-300">
           <img
             src="/images/profile.jpeg"
             alt="Abdus Samad"
-            className="w-10 h-10 rounded-full object-cover border-2 border-emerald-500 shadow-lg"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover border-2 border-emerald-500 shadow-lg"
             onError={(e) => {
               e.target.style.display = 'none';
             }}
@@ -23,7 +23,7 @@ const Footer = () => {
 
         {/* Creator Text */}
         <div className="text-center sm:text-left">
-          <p className={`text-sm font-medium ${textClass}`}>
+          <p className={`text-xs sm:text-sm font-medium ${textClass}`}>
             Created by <span className="font-bold text-emerald-500">Abdus Samad</span>
           </p>
           <p className={`text-xs ${theme === "dark" ? "text-slate-500" : "text-slate-500"}`}>
